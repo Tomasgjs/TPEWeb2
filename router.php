@@ -20,13 +20,13 @@ $params = explode('/', $action);
 switch ($params[0]) {
     case 'home':
         $controller = new CancionController();
-        $controller->showHome();
+        $controller->showCanciones();
         break;
-    case 'agregar':
+    case 'addCancion':
         $controller = new CancionController();
         $controller->addCancion();
         break;
-    case 'eliminar':
+    case 'deleteCancion':
         $controller = new TaskController();
         $controller->removeCancion($params[1]);
         break;
