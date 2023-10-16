@@ -1,0 +1,11 @@
+<!-- aca iria el template header -->
+
+<ul class="list-group">
+<?php foreach($canciones as $cancion): ?>
+    <li><?= $cancion->Nombre?></li>
+    <li><?= $cancion->Duracion?></li>
+    <li><?=$cancion->Album_fk?></li>
+<?php endforeach ?>
+</ul>
+
+<!-- aca iria el template footer -->
