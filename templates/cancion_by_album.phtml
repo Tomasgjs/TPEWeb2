@@ -1,0 +1,14 @@
+<?php require 'templates/header.phtml' ?>
+
+<h1><?=  $nombreAlbum; ?></h1>
+<ul class="">
+<?php foreach($canciones as $cancion): ?>
+    <div>
+
+        <li><?= $cancion->Nombre?></li>
+        <li><?= $cancion->Duracion?></li>
+
+    </div>
+
+<?php endforeach ?>
+</ul>

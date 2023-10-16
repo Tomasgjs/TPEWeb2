@@ -1,0 +1,46 @@
+<?php require 'templates/header.phtml' ?>
+
+
+
+
+<ul class="list-group">
+<?php foreach($albums as $album): ?>
+    <div>
+    <a href="album/<?= $album->id?>" type="button" class=''>
+        <li><?= $album->nombre?></li>
+        <li><?= $album->autor?></li>
+        <li><?=$album->fecha?></li>
+    </a>
+    </div>
+    <div>
+        <a href="deleteAlbum/<?= $album->id ?>" type="button" class=''>Borrar</a>
+    </div>
+<?php endforeach ?>
+</ul>
+
+<?php require_once 'templates/formalbums.phtml' ?>
+
+<form action="updateAlbum" method="POST">
+            <label>Seleccione un Album</label>
+            <select required name="id" class="">
+                    <?php foreach($albums as $album): ?>
+                    <option value="<?= $album->id?>"><?=$album->nombre ?></option>
+                    <?php endforeach ?>
+            </select>
+
+            <div class="">
+                <label>Nuevo nombre</label>
+                <input name="nombre" type="text" class="">
+            </div>
+
+            <div class="">
+                <label>Nuevo autor</label>
+                <input name="autor" type="text" class="">
+            </div>
+            <div class="">
+                <label>Nueva fecha</label>
+                <input name="fecha" type="number" class="" min="1"> 
+            </div>
+
+    <button type="submit" class="">Guardar</button>
+</form>

@@ -1,4 +1,6 @@
 <?php
+require_once './app/controllers/cancionesController.php'
+require_once './app/controllers/album.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -7,7 +9,8 @@ if (!empty( $_GET['action'])) {
     $action = $_GET['action'];
 }
 
-// home    ->           CancionController->showHome();
+// home    ->           homeController->showHome();
+// cancion   ->         CancionController->showCanciones();
 // agregar   ->         CancionController->addCancion();
 // eliminar/:ID  ->     CancionController->removeCancion($id); 
 // login ->             AuthContoller->showLogin();
@@ -18,7 +21,27 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    case 'home':
+    case 'albums':
+        $controller = new AlbumController();
+        $controller->showAlbums();
+        break;
+    case 'addAlbum':
+        $controller = new AlbumController();
+        $controller->addAlbum();
+        break;        
+    case 'deleteAlbum':
+        $controller = new AlbumController();
+        $controller->deleteAlbum($params[1]);
+        break;
+    case 'updateAlbum':
+        $controller = new AlbumController();
+        $controller->updateAlbum();
+        break;
+    case 'album':
+        $controller = new AlbumController();
+        $controller->showCancionesByAlbum($params[1]);
+        break;
+    case 'cancion':
         $controller = new CancionController();
         $controller->showCanciones();
         break;
