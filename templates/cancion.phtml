@@ -1,6 +1,14 @@
-<?php require_once 'templates/header.phtml' ?>
+<?php require_once 'templates/header.phtml';?>
 
 
+<h3 class="p-4">Detalle de la cancion</h3>
+    <ul class="albums-list">
+            <div class='album-list'>
+                <li class="p-2"><?= $cancion->Nombre?></li>
+                <li class="p-2"><?= $cancion->Duracion?></li>
+                <li class="p-2"><?= $cancion->album_nombre?></li>
+            </div>
+        </ul>
 
 
 

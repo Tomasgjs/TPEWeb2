@@ -24,7 +24,7 @@ class CancionesController {
     }
 
     public function showCancionById($id){
-        $cancion = $this->model->getCancionById($id);
+        $cancion = $this->model->getCancion($id);
         $this->view->showCancion($cancion);
     }
 

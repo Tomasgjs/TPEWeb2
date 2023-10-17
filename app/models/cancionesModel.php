@@ -15,6 +15,13 @@ class CancionesModel{
         return $canciones;
     }
 
+    function getCancion($id){
+        $query = $this->db->prepare('SELECT a.*,b.nombre AS album_nombre FROM canciones a INNER JOIN albumes b ON a.Album_fk = b.id WHERE a.id = ?');
+        $query->execute([$id]);
+        $canciones = $query->fetch(PDO::FETCH_OBJ);
+        return $canciones;
+    }
+
     public function getCancionById($id) {
         $query = $this->db->prepare('SELECT * FROM canciones WHERE id = ?');
         $query->execute([$id]);
