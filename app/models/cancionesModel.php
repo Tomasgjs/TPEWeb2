@@ -1,6 +1,7 @@
 <?php
+require_once './app/models/model.php';
 
-class CancionesModel{
+class CancionesModel extends Model{
     private $db;
 
     function __construct(){

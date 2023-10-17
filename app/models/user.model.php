@@ -1,5 +1,7 @@
 <?php
-    class UserModel {
+require_once './app/models/model.php';
+
+    class UserModel extends Model {
         private $db;
     
         function __construct() {

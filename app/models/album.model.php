@@ -1,6 +1,7 @@
 <?php
+require_once './app/models/model.php';
 
-class AlbumModel {
+class AlbumModel extends Model {
     private $db;
 
     function __construct() {
