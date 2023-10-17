@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-09-2023 a las 03:45:26
+-- Tiempo de generación: 17-10-2023 a las 05:16:47
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,10 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `albumes` (
   `id` int(11) NOT NULL,
-  `nombre` int(11) NOT NULL,
-  `autor` int(11) NOT NULL,
-  `fecha` year(4) NOT NULL
+  `nombre` varchar(100) NOT NULL,
+  `autor` varchar(100) NOT NULL,
+  `fecha` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `albumes`
+--
+
+INSERT INTO `albumes` (`id`, `nombre`, `autor`, `fecha`) VALUES
+(19, 'Peliculas', 'La maquina de hacer pajaros', 1977),
+(20, 'La era de la boludez', 'Divididos', 1993);
 
 -- --------------------------------------------------------
 
@@ -46,6 +54,13 @@ CREATE TABLE `canciones` (
   `Duracion` time NOT NULL,
   `Album_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `canciones`
+--
+
+INSERT INTO `canciones` (`id`, `Nombre`, `Duracion`, `Album_fk`) VALUES
+(1, 'Peperina', '00:06:12', 19);
 
 --
 -- Índices para tablas volcadas
@@ -72,13 +87,13 @@ ALTER TABLE `canciones`
 -- AUTO_INCREMENT de la tabla `albumes`
 --
 ALTER TABLE `albumes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `canciones`
 --
 ALTER TABLE `canciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
