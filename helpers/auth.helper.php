@@ -21,10 +21,9 @@ class AuthHelper {
 
     public static function verify() {
         AuthHelper::init();
-        if (!isset($_SESSION['USER_ID'])) {
+        if (isset($_SESSION['USER_ID'])) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

@@ -7,7 +7,8 @@ require_once './helpers/auth.helper.php';
 class AlbumController {
     private $view;
     private $model;
-    function __construct() {
+    public function __construct() {
+        $userstatus = AuthHelper::verify();
         $this->model = new AlbumModel();
         $this->view = new AlbumView();
     } 
@@ -15,6 +16,7 @@ class AlbumController {
     public function showAlbums() {
         $albums = $this->model->getAlbums();
         $this->view->showAlbums($albums);
+
     }
 
 
