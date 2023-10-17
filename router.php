@@ -22,7 +22,6 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    //album controllers
     case 'albums':
         $controller = new AlbumController();
         $controller->showAlbums();
@@ -43,7 +42,6 @@ switch ($params[0]) {
         $controller = new AlbumController();
         $controller->showCancionesByAlbum($params[1]);
         break;
-    //cancion controllers
     case 'canciones':
         $controller = new CancionesController();
         $controller->showCanciones();
@@ -54,12 +52,12 @@ switch ($params[0]) {
         break;
     case 'deleteCancion':
         $controller = new CancionesController();
-        $controller->removeCancion($params[1]);
+        $controller->deleteCancion($params[1]);
         break;
     case 'updateCancion':
         $controller = new CancionesController();
         $controller->updateCancion($params[1]);
-    //user controller
+        break;
     case 'login':
         $controller = new AuthController(); //ver si hacer el user con username o email
         $controller->showLogin(); 
@@ -73,8 +71,9 @@ switch ($params[0]) {
         $controller->logout();
         break;
     default: 
-        $controller = new AuthController();
-        $controller->showError();
+                                    //     $controller = new AuthController();
+                                    //     $controller->showError();
+        echo "404 Page Not Found";
         break;
 
 }

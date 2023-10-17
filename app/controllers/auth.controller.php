@@ -40,7 +40,7 @@ require_once './app/models/user.model.php';
     }
     public function logout() {
         AuthHelper::logout();
-        header('Location: ' . BASE_URL);    
+        header('Location: ' . BASE_URL . 'albums');    
     }
 }
 

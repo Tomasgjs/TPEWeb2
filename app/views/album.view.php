@@ -2,11 +2,7 @@
 
 class AlbumView {
     public function showAlbums($albums) {
-        $count = count($albums);
 
-        // NOTA: el template va a poder acceder a todas las variables y constantes que tienen alcance en esta funcion
-
-        // mostrar el template
         require 'templates/album.phtml';
     }
 

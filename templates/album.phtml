@@ -11,8 +11,8 @@
             <li><a href="album/<?= $album->id?>" type="button" class=''><?=$album->fecha?></a></li>
             <?php if (isset($_SESSION['USER_ID'])) : ?>
                 <li><a href="deleteAlbum/<?= $album->id ?>" type="button" >Borrar</a></li>
-            <?php endif ?>
     </ul>
+<?php endif ?>
 </div>
 
 <?php endforeach ?>
