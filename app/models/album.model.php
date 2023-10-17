@@ -12,7 +12,6 @@ class AlbumModel {
         $query = $this->db->prepare('SELECT * FROM albumes');
         $query->execute();
 
-        // $tasks es un arreglo de tareas
         $albums = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $albums;

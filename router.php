@@ -1,5 +1,5 @@
 <?php
-require_once './app/controllers/cancionesController.php'
+require_once './app/controllers/cancionesController.php';
 require_once './app/controllers/album.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -41,18 +41,21 @@ switch ($params[0]) {
         $controller = new AlbumController();
         $controller->showCancionesByAlbum($params[1]);
         break;
-    case 'cancion':
-        $controller = new CancionController();
+    case 'canciones':
+        $controller = new CancionesController();
         $controller->showCanciones();
         break;
     case 'addCancion':
-        $controller = new CancionController();
+        $controller = new CancionesController();
         $controller->addCancion();
         break;
     case 'deleteCancion':
-        $controller = new TaskController();
+        $controller = new CancionesController();
         $controller->removeCancion($params[1]);
         break;
+    case 'updateCancion':
+        $controller = new CancionesController();
+        $controller->updateCancion($params[1]);
     case 'login':
         $controller = new AuthController();
         $controller->showLogin(); 
