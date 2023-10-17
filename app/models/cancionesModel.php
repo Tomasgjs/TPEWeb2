@@ -24,7 +24,7 @@ class CancionesModel{
     }
 
     function insertCancion($nombre, $duracion, $album) {
-        $query = $this->db->prepare('INSERT INTO canciones (nombre, duracion, album) VALUES(?,?,?)');
+        $query = $this->db->prepare('INSERT INTO canciones (Nombre, Duracion, Album_fk) VALUES(?,?,?)');
         $query->execute([$nombre, $duracion, $album]);
 
         return $this->db->lastInsertId();
@@ -36,7 +36,7 @@ class CancionesModel{
     }
 
     function editCancion($id, $nombre, $duracion, $album) {
-        $query = $this->db->prepare('UPDATE canciones SET nombre = ?, duracion = ?, album = ? WHERE id = ?');
+        $query = $this->db->prepare('UPDATE canciones SET Nombre = ?, Duracion = ?, Album_fk = ? WHERE id = ?');
         $query->execute([$nombre, $duracion, $album, $id]);
     }
 }
