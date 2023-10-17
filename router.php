@@ -54,7 +54,7 @@ switch ($params[0]) {
         $controller = new CancionesController();
         $controller->deleteCancion($params[1]);
         break;
-    case 'updateCancion':
+    case 'editCancion':
         $controller = new CancionesController();
         $controller->updateCancion($params[1]);
         break;

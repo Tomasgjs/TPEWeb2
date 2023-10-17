@@ -1,15 +1,17 @@
 <?php require_once 'templates/header.phtml' ?>
 
+<ul class="albums-list">
 <?php foreach($canciones as $cancion): ?>
-    <ul class="album-list">
-        <li><?= $cancion->nombre?></li>
-        <li><?= $cancion->duracion?></li>
-        <li><?=$cancion->album_nombre?></li>
+    <div class='album-list'>
+        <li><a href="cancion/<?= $cancion->id?>" type="button" class=''><?= $cancion->Nombre?></a></li>
+        <li><a href="cancion/<?= $cancion->id?>" type="button" class=''><?= $cancion->Duracion?></a></li>
+        <li><a href="cancion/<?= $cancion->id?>" type="button" class=''><?=$cancion->album_nombre?></a></li>
         <?php if (isset($_SESSION['USER_ID'])) : ?>
-            <li><a href="deleteCancion/<?= $cancion->id?>" type="button">Borrar</a></li>
-        <?php endif ?>
-    </ul>
-<?php endforeach ?>
+            <li><a href="deleteCancion/<?= $cancion->id?>" type="button" >Borrar</a></li>
+            <?php endif ?>
+    </div>
+            <?php endforeach ?>
+</ul>
 
 <?php if (isset($_SESSION['USER_ID'])) : ?>
     <div class="form-albums">
@@ -24,12 +26,20 @@
             </select>
 
                     <div class="">
+                        <label>Nuevo nombre</label>
+                        <input name="nombre" type="text" class="">
+                    </div>
+                    <div class="">
                         <label>Nueva duracion</label>
-                        <input name="autor" type="text" class="">
+                        <input name="duracion" type="text" class="">
                     </div>
                     <div class="">
                         <label>Nuevo album</label>
-                        <input name="fecha" type="number" class=""> 
+                        <select required name="album" class="">
+                            <?php foreach($albums as $album): ?>
+                            <option value="<?= $album->id?>"><?=$album->nombre ?></option>
+                            <?php endforeach ?>
+                        </select> 
                     </div>
 
             <button type="submit" class="">Guardar</button>

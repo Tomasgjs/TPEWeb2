@@ -10,7 +10,11 @@
             </div>
             <div class="">
                 <label>Album</label>
-                <input required name="album" type="text" class=""> 
+                <select required name="Album_fk" class="">
+                    <?php foreach($albums as $album): ?>
+                    <option value="<?= $album->id?>"><?=$album->nombre ?></option>
+                    <?php endforeach ?>
+            </select>
             </div>
 
     <button type="submit" class="">Guardar</button>
