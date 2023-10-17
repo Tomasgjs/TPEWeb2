@@ -73,6 +73,7 @@ switch ($params[0]) {
         $controller->logout();
         break;
     default: 
+        $controller = new AuthController();
         $controller->showError();
         break;
 

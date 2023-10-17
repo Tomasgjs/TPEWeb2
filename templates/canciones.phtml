@@ -1,45 +1,45 @@
 <?php require_once 'templates/header.phtml' ?>
 
-<ul class="list-group">
 <?php foreach($canciones as $cancion): ?>
-    <div>
-        <a href="cancion/<?= $cancion->id?>" type="button">
-            <li><?= $cancion->Nombre?></li>
-            <li><?= $cancion->Duracion?></li>
-            <li><?=$cancion->Album_fk?></li>
-        </a>
-    </div>
-    <div>
-        <a href="deleteCancion/<?= $cancion->id?>" type="button">Borrar</a>
-    </div>
+    <ul class="album-list">
+        <li><?= $cancion->nombre?></li>
+        <li><?= $cancion->duracion?></li>
+        <li><?=$cancion->album_nombre?></li>
+        <?php if (isset($_SESSION['USER_ID'])) : ?>
+            <li><a href="deleteCancion/<?= $cancion->id?>" type="button">Borrar</a></li>
+        <?php endif ?>
+    </ul>
 <?php endforeach ?>
-</ul>
 
-<?php require_once 'templates/formCanciones.phtml' ?>
+<?php if (isset($_SESSION['USER_ID'])) : ?>
+    <div class="form-albums">
+        <?php require_once 'templates/formCanciones.phtml' ?>
+        <form action="editCancion" method="POST">
+                    <label>Seleccione una Cancion</label>
+                    <select required name="id" class="">
+                            <?php foreach($canciones as $cancion): ?>
+                            <option value="<?= $cancion->id?>"><?=$cancion->nombre ?></option>
+                            <?php endforeach ?>
+                    </select>
 
-<form action="editCancion" method="POST">
-            <label>Seleccione una Cancion</label>
-            <select required name="id" class="">
-                    <?php foreach($canciones as $cancion): ?>
-                    <option value="<?= $cancion->id?>"><?=$cancion->nombre ?></option>
-                    <?php endforeach ?>
-            </select>
+                    <div class="">
+                        <label>Nuevo nombre</label>
+                        <input name="nombre" type="text" class="">
+                    </div>
 
-            <div class="">
-                <label>Nuevo nombre</label>
-                <input name="nombre" type="text" class="">
-            </div>
+                    <div class="">
+                        <label>Nueva duracion</label>
+                        <input name="autor" type="text" class="">
+                    </div>
+                    <div class="">
+                        <label>Nuevo album</label>
+                        <input name="fecha" type="number" class=""> 
+                    </div>
 
-            <div class="">
-                <label>Nueva duracion</label>
-                <input name="autor" type="text" class="">
-            </div>
-            <div class="">
-                <label>Nuevo album</label>
-                <input name="fecha" type="number" class=""> 
-            </div>
+            <button type="submit" class="">Guardar</button>
+        </form>
+    </div>
 
-    <button type="submit" class="">Guardar</button>
-</form>
+<?php endif ?>
 
 <?php require_once 'templates/footer.phtml' ?>

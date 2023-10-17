@@ -8,7 +8,7 @@ class CancionesModel{
     }
 
     function getCanciones(){
-        $query = $this->db->prepare('SELECT * FROM canciones');
+        $query = $this->db->prepare('SELECT a.nombre, a.duracion, b.nombre AS album_nombre FROM canciones a INNER JOIN albumes b ON a.Album_fk = b.id');
         $query->execute();
 
         $canciones = $query->fetchAll(PDO::FETCH_OBJ);
@@ -23,9 +23,9 @@ class CancionesModel{
         return $cancion;
     }
 
-    function insertCancion($nombre, $duracion, $album) {
-        $query = $this->db->prepare('INSERT INTO canciones (nombre, duracion, album) VALUES(?,?,?)');
-        $query->execute([$nombre, $duracion, $album]);
+    function insertCancion($nombre, $duracion, $Album_fk) {
+        $query = $this->db->prepare('INSERT INTO canciones (nombre, duracion, Album_fk) VALUES(?,?,?)');
+        $query->execute([$nombre, $duracion, $Album_fk]);
 
         return $this->db->lastInsertId();
     }
@@ -35,8 +35,8 @@ class CancionesModel{
         $query->execute([$id]);
     }
 
-    function editCancion($id, $nombre, $duracion, $album) {
-        $query = $this->db->prepare('UPDATE canciones SET nombre = ?, duracion = ?, album = ? WHERE id = ?');
-        $query->execute([$nombre, $duracion, $album, $id]);
+    function editCancion($id, $nombre, $duracion, $Album_fk) {
+        $query = $this->db->prepare('UPDATE canciones SET nombre = ?, duracion = ?, Album_fk = ? WHERE id = ?');
+        $query->execute([$nombre, $duracion, $Album_fk, $id]);
     }
 }
