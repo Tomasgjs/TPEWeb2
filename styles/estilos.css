@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+.album-list {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    text-decoration: none;
+    background-color: rgb(241, 241, 241);
+    
+}
+
+.album-list  a{
+    color:black;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.form-albums{
+    display:flex ;
+    justify-content: space-evenly;
+}
+
+.form-albums form{
+    padding: 20px;
+    border: solid 1px black;
+    justify-content: space-between;
+}
+
+.cancionesbyalbumlist{
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    text-decoration: none;
+    background-color: rgb(241, 241, 241);
+}
+
+.album-title{
+    text-align: center;
+}
