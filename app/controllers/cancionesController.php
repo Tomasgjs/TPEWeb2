@@ -23,6 +23,11 @@ class CancionesController {
         $this->view->showCanciones($canciones, $albums);
     }
 
+    public function showCancionById($id){
+        $cancion = $this->model->getCancionById($id);
+        $this->view->showCancion($cancion);
+    }
+
     public function addCancion() {
         $nombre = $_POST['nombre'];
         $duracion = $_POST['duracion'];
@@ -48,17 +53,14 @@ class CancionesController {
 
     public function updateCancion(){
         $id = $_POST['id'];
-
         $cancionActual = $this->model->getCancionById($id);
 
-        $nombre = (!empty($_POST['nombre']) && $_POST['nombre'] !== "") ? $_POST['nombre'] : $cancionActual->nombre;
-        $duracion = (!empty($_POST['duracion']) && $_POST['duracion'] !== "") ? $_POST['duracion'] : $cancionActual->duracion;
+        $nombre = (!empty($_POST['nombre']) && $_POST['nombre'] !== "") ? $_POST['nombre'] : $cancionActual->Nombre;
+        $duracion = (!empty($_POST['duracion']) && $_POST['duracion'] !== "") ? $_POST['duracion'] : $cancionActual->Duracion;
         $album = $_POST['album'];
         
-
         $this->model->editCancion($id, $nombre, $duracion, $album);
             header('Location: ' . BASE_URL . 'canciones');
-
     }
 }
 

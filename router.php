@@ -22,6 +22,7 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
+//album controllers
     case 'albums':
         $controller = new AlbumController();
         $controller->showAlbums();
@@ -42,6 +43,7 @@ switch ($params[0]) {
         $controller = new AlbumController();
         $controller->showCancionesByAlbum($params[1]);
         break;
+//canciones controllers
     case 'canciones':
         $controller = new CancionesController();
         $controller->showCanciones();
@@ -58,8 +60,13 @@ switch ($params[0]) {
         $controller = new CancionesController();
         $controller->updateCancion($params[1]);
         break;
+    case 'cancion':
+        $controller = new CancionesController();
+        $controller->showCancionById($params[1]);
+        break;
+//user controllers
     case 'login':
-        $controller = new AuthController(); //ver si hacer el user con username o email
+        $controller = new AuthController();
         $controller->showLogin(); 
         break;
     case 'auth':
