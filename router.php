@@ -58,7 +58,7 @@ switch ($params[0]) {
         $controller = new CancionesController();
         $controller->updateCancion($params[1]);
     case 'login':
-        $controller = new AuthController();
+        $controller = new AuthController(); //ver si hacer el user con username o email
         $controller->showLogin(); 
         break;
     case 'auth':

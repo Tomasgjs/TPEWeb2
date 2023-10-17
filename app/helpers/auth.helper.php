@@ -8,7 +8,7 @@ class AuthHelper {
         }
     }
 
-    public static function login($user) {
+    public static function login($user) { //ver si hacer el user con username o email
         AuthHelper::init();
         $_SESSION['USER_ID'] = $user->id;
         $_SESSION['USER_EMAIL'] = $user->email; 
