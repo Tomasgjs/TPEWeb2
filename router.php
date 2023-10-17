@@ -1,6 +1,7 @@
 <?php
 require_once './app/controllers/cancionesController.php';
 require_once './app/controllers/album.controller.php';
+require_once './app/controllers/auth.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -62,6 +63,12 @@ switch ($params[0]) {
         break;
     case 'auth':
         $controller = new AuthController();
+    case 'login':
+        $controller = new AuthController();
+        $controller->showLogin();
+        break;
+    case 'auth':
+        $controller = new AuthController();
         $controller->auth();
         break;
     case 'logout':
@@ -71,4 +78,5 @@ switch ($params[0]) {
     default: 
         $controller->showError();
         break;
+
 }

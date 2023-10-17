@@ -3,24 +3,28 @@
 
 
 
-<ul class="list-group">
 <?php foreach($albums as $album): ?>
-    <div>
-    <a href="album/<?= $album->id?>" type="button" class=''>
-        <li><?= $album->nombre?></li>
-        <li><?= $album->autor?></li>
-        <li><?=$album->fecha?></li>
-    </a>
-    </div>
-    <div>
-        <a href="deleteAlbum/<?= $album->id ?>" type="button" class=''>Borrar</a>
-    </div>
+<div class="albums-list">
+    <ul class="album-list">
+            <li><a href="album/<?= $album->id?>" type="button" class=''><?= $album->nombre?></a></li>
+            <li><a href="album/<?= $album->id?>" type="button" class=''><?= $album->autor?></a></li>
+            <li><a href="album/<?= $album->id?>" type="button" class=''><?=$album->fecha?></a></li>
+            <?php if (isset($_SESSION['USER_ID'])) : ?>
+                <li><a href="deleteAlbum/<?= $album->id ?>" type="button" >Borrar</a></li>
+            <?php endif ?>
+    </ul>
+</div>
+
 <?php endforeach ?>
-</ul>
+
+
+<?php if (isset($_SESSION['USER_ID'])) : ?>
+    <div class="form-albums">
 
 <?php require_once 'templates/formalbums.phtml' ?>
 
 <form action="updateAlbum" method="POST">
+            <h2>Modificar Album</h2>
             <label>Seleccione un Album</label>
             <select required name="id" class="">
                     <?php foreach($albums as $album): ?>
@@ -44,3 +48,10 @@
 
     <button type="submit" class="">Guardar</button>
 </form>
+
+</div>
+
+
+<?php endif ?>
+
+<?php require 'templates/footer.phtml' ?>
