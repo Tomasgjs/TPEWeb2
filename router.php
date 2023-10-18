@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
 require_once './app/controllers/cancionesController.php';
 require_once './app/controllers/album.controller.php';
 require_once './app/controllers/auth.controller.php';

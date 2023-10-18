@@ -2,6 +2,7 @@
 require_once './app/models/album.model.php';
 require_once './app/views/album.view.php';
 require_once './helpers/auth.helper.php';
+require_once './app/models/model.php';
 
 
 class AlbumController {

@@ -2,11 +2,6 @@
 require_once './app/models/model.php';
 
 class CancionesModel extends Model{
-    private $db;
-
-    function __construct(){
-        $this->db = new PDO('mysql:host=localhost;dbname=db_cancionero;charset=utf8', 'root', '');
-    }
 
     function getCanciones(){
         $query = $this->db->prepare('SELECT a.*, b.nombre AS album_nombre FROM canciones a INNER JOIN albumes b ON a.Album_fk = b.id');

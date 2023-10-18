@@ -8,11 +8,9 @@
         }
 
         function deploy() {
-            // Chequear si hay tablas
             $query = $this->db->query('SHOW TABLES');
-            $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
+            $tables = $query->fetchAll(); 
             if(count($tables)==0) {
-                // Si no hay crearlas
                 $sql =<<<END
                 -- phpMyAdmin SQL Dump
                 -- version 5.2.1
@@ -44,10 +42,10 @@
                 --
                 
                 CREATE TABLE `albumes` (
-                  `id` int(11) NOT NULL,
-                  `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-                  `autor` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-                  `fecha` year(4) NOT NULL
+                `id` int(11) NOT NULL,
+                `nombre` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+                `autor` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+                `fecha` year(4) NOT NULL
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                 
                 --
@@ -65,10 +63,10 @@
                 --
                 
                 CREATE TABLE `canciones` (
-                  `id` int(11) NOT NULL,
-                  `Nombre` varchar(45) NOT NULL,
-                  `Duracion` time NOT NULL,
-                  `Album_fk` int(11) NOT NULL
+                `id` int(11) NOT NULL,
+                `Nombre` varchar(45) NOT NULL,
+                `Duracion` time NOT NULL,
+                `Album_fk` int(11) NOT NULL
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
                 
                 --
@@ -86,9 +84,9 @@
                 --
                 
                 CREATE TABLE `usuarios` (
-                  `id` int(11) NOT NULL,
-                  `username` varchar(150) NOT NULL,
-                  `password` varchar(255) NOT NULL
+                `id` int(11) NOT NULL,
+                `username` varchar(150) NOT NULL,
+                `password` varchar(255) NOT NULL
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
                 
                 --
@@ -106,20 +104,20 @@
                 -- Indices de la tabla `albumes`
                 --
                 ALTER TABLE `albumes`
-                  ADD PRIMARY KEY (`id`);
+                ADD PRIMARY KEY (`id`);
                 
                 --
                 -- Indices de la tabla `canciones`
                 --
                 ALTER TABLE `canciones`
-                  ADD PRIMARY KEY (`id`),
-                  ADD KEY `Album_fk` (`Album_fk`);
+                ADD PRIMARY KEY (`id`),
+                ADD KEY `Album_fk` (`Album_fk`);
                 
                 --
                 -- Indices de la tabla `usuarios`
                 --
                 ALTER TABLE `usuarios`
-                  ADD PRIMARY KEY (`id`);
+                ADD PRIMARY KEY (`id`);
                 
                 --
                 -- AUTO_INCREMENT de las tablas volcadas
@@ -129,19 +127,19 @@
                 -- AUTO_INCREMENT de la tabla `albumes`
                 --
                 ALTER TABLE `albumes`
-                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+                MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
                 
                 --
                 -- AUTO_INCREMENT de la tabla `canciones`
                 --
                 ALTER TABLE `canciones`
-                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+                MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
                 
                 --
                 -- AUTO_INCREMENT de la tabla `usuarios`
                 --
                 ALTER TABLE `usuarios`
-                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+                MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
                 
                 --
                 -- Restricciones para tablas volcadas
@@ -151,7 +149,7 @@
                 -- Filtros para la tabla `canciones`
                 --
                 ALTER TABLE `canciones`
-                  ADD CONSTRAINT `Album_fk` FOREIGN KEY (`Album_fk`) REFERENCES `albumes` (`id`);
+                ADD CONSTRAINT `Album_fk` FOREIGN KEY (`Album_fk`) REFERENCES `albumes` (`id`);
                 COMMIT;
                 
                 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

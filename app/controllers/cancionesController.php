@@ -3,6 +3,7 @@ require_once './app/models/cancionesModel.php';
 require_once './app/views/cancionesView.php';
 require_once './helpers/auth.helper.php';
 require_once './app/models/album.model.php';
+require_once './app/models/model.php';
 
 class CancionesController {
     private $model;
